@@ -12,3 +12,9 @@ Minimalne drzewo rozpinające na przykładzie budowy autostrad.
   * Karol Pilot
   * Paweł Piątek
   * Tomasz Janus
+
+## Przygotowanie środowiska
+
+```commandline
+pip install matplotlib
+```
