@@ -33,7 +33,7 @@ def calc_gps_to_pixels(lat: str, lon: str) -> tuple[int, int]:
     lat_f = (lat_f - MAP_GPS_LATITUDE_MIN) * height_scale
     lon_f = (lon_f - MAP_GPS_LONGITUDE_MIN) * width_scale
 
-    return int(lat_f), int(MAP_PX_HEIGHT_SIZE - lon_f)
+    return int(lat_f), int(lon_f)
 
 
 def show_poland_map(cities: list[City]) -> None:
@@ -49,7 +49,7 @@ def show_poland_map(cities: list[City]) -> None:
         x, y = calc_gps_to_pixels(city.latidude, city.longitude)
         plt.plot(x, y, marker='o', color="black")
         plt.text(x + 15.5, y - 4.5, city.name, fontsize=9)
-        print([city.name, x, y])
+        print([city.name, city.longitude, city.latidude, str(x) + " px", str(y) + " px"])
 
     plt.imshow(poland_map)
     plt.show()
