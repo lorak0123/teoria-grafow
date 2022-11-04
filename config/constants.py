@@ -10,7 +10,7 @@ MAP_GPS_LATITUDE_MIN: float = 49.00
 """Zawiera minimalną szerokość geograficzną obszaru Polski"""
 MAP_GPS_LATITUDE_MAX: float = 54.50
 """Zawiera maksymalną szerokość geograficzną obszaru Polski"""
-MAP_PX_WIDTH_SIZE: int = 1450
+MAP_PX_WIDTH_SIZE: int = 1472
 """Szerokość obrazu zawierającego mapę Polski"""
-MAP_PX_HEIGHT_SIZE: int = 1450
+MAP_PX_HEIGHT_SIZE: int = 1392
 """Wysokość obrazu zawierającego mapę Polski"""
