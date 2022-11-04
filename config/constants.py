@@ -14,3 +14,5 @@ MAP_PX_WIDTH_SIZE: int = 1472
 """Szerokość obrazu zawierającego mapę Polski"""
 MAP_PX_HEIGHT_SIZE: int = 1392
 """Wysokość obrazu zawierającego mapę Polski"""
+MAP_PX_HEIGHT_PADDING: int = 50
+"""Korekta wysokości mapy do obliczeń GPS na PX"""

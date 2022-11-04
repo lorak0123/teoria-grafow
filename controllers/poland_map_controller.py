@@ -8,6 +8,7 @@ from config.constants import MAP_GPS_LONGITUDE_MAX
 from config.constants import MAP_GPS_LONGITUDE_MIN
 from config.constants import MAP_PX_WIDTH_SIZE
 from config.constants import MAP_PX_HEIGHT_SIZE
+from config.constants import MAP_PX_HEIGHT_PADDING
 from models.City import City
 
 
@@ -27,13 +28,10 @@ def calc_gps_to_pixels(lat: str, lon: str) -> tuple[int, int]:
     lat_f: float = float(lat)
     lon_f: float = float(lon)
 
-    width_scale: float = MAP_PX_WIDTH_SIZE / (MAP_GPS_LONGITUDE_MAX - MAP_GPS_LONGITUDE_MIN)
-    height_scale: float = MAP_PX_HEIGHT_SIZE / (MAP_GPS_LATITUDE_MAX - MAP_GPS_LATITUDE_MIN)
+    lat_f = ((lat_f - MAP_GPS_LATITUDE_MIN) / (MAP_GPS_LATITUDE_MAX - MAP_GPS_LATITUDE_MIN)) * MAP_PX_HEIGHT_SIZE
+    lon_f = ((lon_f - MAP_GPS_LONGITUDE_MIN) / (MAP_GPS_LONGITUDE_MAX - MAP_GPS_LONGITUDE_MIN)) * MAP_PX_WIDTH_SIZE
 
-    lat_f = (lat_f - MAP_GPS_LATITUDE_MIN) * height_scale
-    lon_f = (lon_f - MAP_GPS_LONGITUDE_MIN) * width_scale
-
-    return int(lat_f), int(lon_f)
+    return int(lon_f), int(MAP_PX_HEIGHT_SIZE - lat_f + MAP_PX_HEIGHT_PADDING)
 
 
 def show_poland_map(cities: list[City]) -> None:
@@ -48,8 +46,7 @@ def show_poland_map(cities: list[City]) -> None:
     for city in cities:
         x, y = calc_gps_to_pixels(city.latidude, city.longitude)
         plt.plot(x, y, marker='o', color="black")
-        plt.text(x + 15.5, y - 4.5, city.name, fontsize=9)
-        print([city.name, city.longitude, city.latidude, str(x) + " px", str(y) + " px"])
+        plt.text(x + 15.5, y + 4.5, city.name, fontsize=9)
 
     plt.imshow(poland_map)
     plt.show()
