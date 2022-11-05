@@ -44,7 +44,7 @@ def show_poland_map(cities: list[City]) -> None:
     plt.figure(figsize=(30, 30))
 
     for city in cities:
-        x, y = calc_gps_to_pixels(city.latidude, city.longitude)
+        x, y = calc_gps_to_pixels(city.latitude, city.longitude)
         plt.plot(x, y, marker='o', color="black")
         plt.text(x + 15.5, y + 4.5, city.name, fontsize=9)
 
