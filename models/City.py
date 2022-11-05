@@ -12,6 +12,11 @@ class City:
         self.__connected_cities: list[City] = []
 
     def __str__(self) -> str:
+        """
+        Zwraca tekstowy opis klasy miasta z najważniejszymi informacjami o nim.
+
+        :return: str
+        """
         return f"City: { self.name }, latitude: { self.latitude }, longitude: { self.longitude }"
 
     def add_new_connection(self, add_city: City) -> None:
@@ -21,5 +26,6 @@ class City:
         :param add_city: City: miasto połączone z aktualnym miastem
         :return: None
         """
-        self.__connected_cities.append(add_city)
+        if self.name is not add_city.name:
+            self.__connected_cities.append(add_city)
         return None
