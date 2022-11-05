@@ -29,3 +29,11 @@ class City:
         if self.name is not add_city.name:
             self.__connected_cities.append(add_city)
         return None
+
+    def get_city_connections(self) -> list[City]:
+        """
+        Funkcja zwraca informacje o wszystkich miastach połączonych z danym miastem.
+
+        :return: list[City]
+        """
+        return self.__connected_cities
