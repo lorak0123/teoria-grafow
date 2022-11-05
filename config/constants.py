@@ -16,3 +16,5 @@ MAP_PX_HEIGHT_SIZE: int = 1392
 """Wysokość obrazu zawierającego mapę Polski"""
 MAP_PX_HEIGHT_PADDING: int = 50
 """Korekta wysokości mapy do obliczeń GPS na PX"""
+CITIES_RANDOM_COUNT: int = 15
+"""Liczba miast do wylosowania na mapie"""

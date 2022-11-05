@@ -4,7 +4,8 @@ from typing import List
 from models.City import City
 from config.constants import RESOURCE_POLAND_CITIES
 
-def read_data_from_file()  -> List[City]:
+
+def read_data_from_file() -> List[City]:
     df = pd.read_excel(RESOURCE_POLAND_CITIES, header=1).iloc[:, 0:3]
 
     cities:List[City] = []
