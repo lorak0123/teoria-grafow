@@ -38,6 +38,7 @@ def show_poland_map(cities: list[City]) -> None:
     """
     Funkcja powoduje pokazanie na ekranie kompletnej mapy Polski bez dodatkowych oznaczeń.
 
+    :param cities: list[City]: lista wylosowanych miast to prezentacji
     :return: None
     """
     poland_map = mpimg.imread(RESOURCE_POLAND_MAP_PATH, "jpg")
@@ -47,6 +48,31 @@ def show_poland_map(cities: list[City]) -> None:
         x, y = calc_gps_to_pixels(city.latitude, city.longitude)
         plt.plot(x, y, marker='o', color="black")
         plt.text(x + 15.5, y + 4.5, city.name, fontsize=9)
+
+    plt.imshow(poland_map)
+    plt.show()
+    return None
+
+
+def show_poland_map_with_connections(cities: list[City]) -> None:
+    """
+    Funkcja pokazuje miasta na mapie Polski z uwzględnieniem połączeń pomiędzy nimi.
+
+    :param cities: list[City]: lista wylosowanych miast to prezentacji
+    :return: None
+    """
+    poland_map = mpimg.imread(RESOURCE_POLAND_MAP_PATH, "jpg")
+    plt.figure(figsize=(30, 30))
+
+    for city in cities:
+        x, y = calc_gps_to_pixels(city.latitude, city.longitude)
+        plt.plot(x, y, marker='o', color="black")
+        plt.text(x + 15.5, y + 4.5, city.name, fontsize=9)
+
+        for city_2 in city.get_city_connections():
+            x1, y1 = calc_gps_to_pixels(city.latitude, city.longitude)
+            x2, y2 = calc_gps_to_pixels(city_2.latitude, city_2.longitude)
+            plt.plot([x1, x2], [y1, y2], color='black', marker='o', linestyle='solid', linewidth=1, markersize=1)
 
     plt.imshow(poland_map)
     plt.show()

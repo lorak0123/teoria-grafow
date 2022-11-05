@@ -1,5 +1,7 @@
 from controllers.poland_map_controller import show_poland_map
-from controllers.poland_cities_controller import read_data_from_file, get_random_cities
+from controllers.poland_map_controller import show_poland_map_with_connections
+from controllers.poland_cities_controller import read_data_from_file
+from controllers.poland_cities_controller import get_random_cities
 from config.constants import CITIES_RANDOM_COUNT
 
 
@@ -14,3 +16,4 @@ show_poland_map(random_cities)
 for city in random_cities:
     for city_2 in random_cities:
         city.add_new_connection(city_2)
+show_poland_map_with_connections(random_cities)
