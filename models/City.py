@@ -48,10 +48,10 @@ class City:
 
         :return: float
         """
-        lat1 = float(self.latitude.replace(" °N", ""))
-        lon1 = float(self.longitude.replace(" °E", ""))
-        lat2 = float(other.latitude.replace(" °N", ""))
-        lon2 = float(other.longitude.replace(" °E", ""))
+        lat1 = radians(float(self.latitude.replace(" °N", "")))
+        lon1 = radians(float(self.longitude.replace(" °E", "")))
+        lat2 = radians(float(other.latitude.replace(" °N", "")))
+        lon2 = radians(float(other.longitude.replace(" °E", "")))
 
         dlon = lon2 - lon1
         dlat = lat2 - lat1

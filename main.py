@@ -6,7 +6,7 @@ from controllers.poland_cities_controller import read_data_from_file
 from controllers.poland_cities_controller import get_random_cities
 from config.constants import CITIES_RANDOM_COUNT
 from scipy.sparse import csr_matrix
-from scipy.sparse.csgraph import minimum_spanning_tree, johnson
+from scipy.sparse.csgraph import minimum_spanning_tree
 
 
 # ETAP 1: wylosowanie miast i ich prezentacja na mapie
@@ -27,7 +27,7 @@ for city in random_cities:
 show_poland_map_with_connections(random_cities)
 
 X = csr_matrix(matrix)
-Tcsr = johnson(X)
+Tcsr = minimum_spanning_tree(X)
 res = Tcsr.toarray().astype(float)
 
 for y in range(len(res)):
