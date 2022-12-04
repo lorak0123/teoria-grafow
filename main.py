@@ -26,6 +26,8 @@ for city in random_cities:
     matrix.append(single_city_distances)
 show_poland_map_with_connections(random_cities)
 
+# ETAP 3: wyliczenie minimalnego drzewa rozpinającego i prezentacja na mapie
+
 X = csr_matrix(matrix)
 Tcsr = minimum_spanning_tree(X)
 res = Tcsr.toarray().astype(float)
@@ -37,3 +39,14 @@ for y in range(len(res)):
 
 show_poland_map_with_connections(minimal_random_cities)
 
+# ETAP 4: wyliczenie kosztów i uzyskanych oszczędności dzięki zastosowaniu algorytmu
+
+sum_all_connections = sum([sum(i) for i in matrix]) / 2
+sum_minimal_connections = sum(Tcsr.data)
+
+print(f"Koszt utworzenia całej sieci połączeń między miastami: " +
+      f"{sum_all_connections:.2f}")
+print(f"Koszt minimalnego drzewa rozpinającego: " + 
+      f"{sum_minimal_connections:.2f}")
+print(f"Oszczędność dzięki zastosowaniu minimalnego drzewa rozpinającego: " +
+      f"{(1-(sum_minimal_connections/sum_all_connections))*100:.2f}%")
