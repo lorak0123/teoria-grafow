@@ -19,4 +19,5 @@ Minimalne drzewo rozpinające na przykładzie budowy autostrad.
 pip install matplotlib
 pip install pandas
 pip install openpyxl
+pip install scipy
 ```
